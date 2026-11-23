@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07090A">
+<title>NEXAS TV</title>
+<link rel="icon" href="logo.svg" type="image/svg+xml">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="logo" viewBox="193 243 422 318">
+      <path d="M193,556V243H395A110,110 0,0 1,505,353V556H424V400A73.5,73.5 0,0 0,277,400V556Z"/>
+      <path d="M568,467L615,514L568,561L521,514Z"/>
+    </symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+    <symbol id="i-tv" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="M8 21h8"/></symbol>
+    <symbol id="i-news" viewBox="0 0 24 24"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v8a2 2 0 0 1-2 2"/><path d="M8 9h5M8 13h5"/></symbol>
+    <symbol id="i-sport" viewBox="0 0 24 24"><path d="M7 4h10v6a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3M12 15v4M8 21h8"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></symbol>
+    <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+    <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+  </defs>
+</svg>
+
+<div id="bg">
+  <img id="backA" alt=""><img id="backB" alt="">
+  <video id="preview" muted playsinline></video>
+  <div class="shade-h"></div><div class="shade-v"></div>
+</div>
+
+<nav id="rail">
+  <svg class="rail-logo"><use href="#logo"/></svg>
+  <div id="railItems"></div>
+</nav>
+
+<div id="topright"><div id="clock"></div><div class="dev">App developed by Arafat</div></div>
+
+<main id="home" class="view">
+  <section id="hero">
+    <div class="tag"><i class="dot"></i><span id="heroTag">LIVE NOW</span></div>
+    <div id="heroMain">
+      <div class="logo-box"><span class="ini" id="heroIni"></span><img id="heroLogo" alt=""></div>
+      <h1 id="heroName"></h1>
+    </div>
+    <div id="heroMeta"></div>
+    <div class="btns">
+      <button id="btnWatch" class="btn primary nav">▶&nbsp; Watch Live</button>
+      <button id="btnFav" class="btn secondary nav">☆&nbsp; Favorite</button>
+    </div>
+  </section>
+  <div id="rows"></div>
+</main>
+
+<main id="page" class="view" hidden>
+  <div class="ph"><h1 id="pTitle"></h1><span id="pSub"></span></div>
+  <input id="search" class="nav" type="search" placeholder="Search 10,000+ channels…" autocomplete="off" hidden>
+  <div id="grid"></div>
+  <div id="empty" hidden></div>
+</main>
+
+<div id="player" hidden>
+  <video id="video" playsinline></video>
+  <iframe id="yt" allow="autoplay; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" hidden></iframe>
+  <div id="shield"></div>
+  <div id="pLoading"><div class="logo-box big"><span class="ini" id="lIni"></span><img id="lLogo" alt=""></div><div class="spin"></div></div>
+  <div id="pError" class="glass" hidden><b>Channel unavailable</b><span id="pErrSub"></span><a id="pErrLink" class="btn primary sm" target="_blank" rel="noopener" hidden>Watch on YouTube ↗</a></div>
+  <div id="numEntry" class="glass" hidden></div>
+  <button id="pBack" class="round" title="Back (Esc)"><svg><use href="#i-back"/></svg></button>
+  <div id="osd" class="glass">
+    <div class="logo-box"><span class="ini" id="oIni"></span><img id="oLogo" alt=""></div>
+    <div class="info"><div id="oName"></div><div id="oMeta"></div><div id="oHint"></div></div>
+    <button id="oGuide" class="btn secondary sm"><svg><use href="#i-list"/></svg> Channels</button>
+    <button id="oFav" class="btn secondary sm"></button>
+    <button id="oFull" class="btn secondary sm icon" title="Fullscreen (F)"><svg><use href="#i-full"/></svg></button>
+    <div class="right"><span class="live-chip">LIVE</span><span id="oClock"></span></div>
+  </div>
+  <aside id="guide" class="glass">
+    <div class="gh"><svg><use href="#logo"/></svg><b id="gTitle"></b><span id="gCount"></span></div>
+    <div id="gList"></div>
+  </aside>
+</div>
+
+<div id="splash">
+  <div class="glow"></div>
+  <div class="box">
+    <svg class="s-logo"><use href="#logo"/></svg>
+    <div class="s-title">NEXAS TV</div>
+    <div class="s-by">App developed by Arafat</div>
+    <div class="spin"></div>
+    <div id="sStatus">Loading channels…</div>
+    <button id="sRetry" class="btn primary nav" hidden>Try again</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script src="vendor/hls.min.js"></script>
+<script>window.NX_STATIC = true;</script>
+<script src="app.js"></script>
+</body>
+</html>
