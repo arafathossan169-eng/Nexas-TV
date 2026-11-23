@@ -1,8 +1,8 @@
 /* NEXAS TV — web. 1rem ≈ 10dp of the Android TV design; scales with the window. */
-@font-face { font-family: P; src: url(fonts/Poppins-Regular.ttf); font-weight: 400; }
-@font-face { font-family: P; src: url(fonts/Poppins-Medium.ttf); font-weight: 500; }
-@font-face { font-family: P; src: url(fonts/Poppins-SemiBold.ttf); font-weight: 600; }
-@font-face { font-family: P; src: url(fonts/Poppins-Bold.ttf); font-weight: 700; }
+@font-face { font-family: P; src: url(Poppins-Regular.ttf); font-weight: 400; }
+@font-face { font-family: P; src: url(Poppins-Medium.ttf); font-weight: 500; }
+@font-face { font-family: P; src: url(Poppins-SemiBold.ttf); font-weight: 600; }
+@font-face { font-family: P; src: url(Poppins-Bold.ttf); font-weight: 700; }
 
 :root {
   --lime: #9EFF34; --ink: #0A0D0B; --bg: #07090A; --text: #F2F5F0; --muted: #8A948B;
